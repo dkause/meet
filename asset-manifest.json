@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/dkause/meet/static/css/main.f855e6bc.css",
+    "main.js": "/dkause/meet/static/js/main.cbfca5c3.js",
+    "static/js/787.0f140951.chunk.js": "/dkause/meet/static/js/787.0f140951.chunk.js",
+    "service-worker.js": "/dkause/meet/service-worker.js",
+    "static/media/logo.svg": "/dkause/meet/static/media/logo.103b5fa18196d5665a7e12318285c916.svg",
+    "index.html": "/dkause/meet/index.html",
+    "main.f855e6bc.css.map": "/dkause/meet/static/css/main.f855e6bc.css.map",
+    "main.cbfca5c3.js.map": "/dkause/meet/static/js/main.cbfca5c3.js.map",
+    "787.0f140951.chunk.js.map": "/dkause/meet/static/js/787.0f140951.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f855e6bc.css",
+    "static/js/main.cbfca5c3.js"
+  ]
+}
