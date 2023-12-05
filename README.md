@@ -1,4 +1,4 @@
-# meet
+# 🥩 Meet
 
 ## Key Features
 
@@ -121,3 +121,30 @@ And there is events data available for visualization
 And selects the option to view events data in charts and tables  
 **Then** the app should display visual representations such as charts and tables for the events data  
 And the user should have the ability to interact with and customize the visualizations
+
+## Why ServerLess for  🥩 Meet
+
+- scalable  
+We start with very few users
+- cost effective  
+no permanent server cost  
+- industry standard  
+good practise to use
+- easy to deploy  
+I can focus on Code, no server configuration or maintanance needed
+
+## Flowdiagram
+
+```mermaid
+sequenceDiagram;
+MeetApp->>AWS Lambda: Authentication
+AWS Lambda->>OAuth: User?
+OAuth->>AWS Lambda: Yes 
+AWS Lambda->>MeetApp: Redirect for consent 
+MeetApp->>OAuth: User grants consent
+destroy OAuth 
+OAuth->>AWS Lambda: Token
+MeetApp->>AWS Lambda: Request
+AWS Lambda->>GoogleCal: Request
+GoogleCal->>AWS Lambda: Response
+AWS Lambda->>MeetApp: Response
