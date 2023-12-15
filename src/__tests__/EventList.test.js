@@ -16,6 +16,6 @@ describe('<EventList /> component', () => {
     EventListComponent.rerender(
       <EventList events={allEvents} />
     )
-    expect(EventListComponent.getAllByRole('listitem')).toHaveLength(46)
+    expect(EventListComponent.getAllByRole('listitem')).toHaveLength(allEvents.length)
   })
 })
