@@ -1,5 +1,4 @@
-# 🥩 Meet
-
+# 🥩 Meet - get flesh in your it-skills
 ## Key Features
 
 - Filter Events by City.
