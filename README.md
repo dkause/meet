@@ -1,5 +1,5 @@
-# 🥩 Meet 
-get flesh in your it-skills  
+# 🥩 MeetApp
+presents location based it-events  
 ## Key Features
 
 - Filter Events by City.
