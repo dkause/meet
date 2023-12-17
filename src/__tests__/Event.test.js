@@ -33,8 +33,7 @@ describe('<Event /> component', () => {
     )
     expect(showEventDetails).not.toBeInTheDocument()
   })
-  test('click on detailsButton shows event details', async () =>  {
-
+  test('click on detailsButton shows event details', async () => {
     const user = userEvent.setup()
     // const detailsButton = EventComponent.container.querySelector('.detailsButton')
     const detailsButton = EventComponent.queryByText('Show details')
@@ -42,11 +41,10 @@ describe('<Event /> component', () => {
 
     const showEventDetails = EventComponent.queryByText(
       'This is the details div'
-      )
+    )
     expect(showEventDetails).toBeInTheDocument()
   })
-  test('click on detailsButton hides event details', async () =>  {
-
+  test('click on detailsButton hides event details', async () => {
     const user = userEvent.setup()
     // const detailsButton = EventComponent.container.querySelector('.detailsButton')
     const detailsButton = EventComponent.queryByText('hide details')
@@ -54,7 +52,7 @@ describe('<Event /> component', () => {
 
     const showEventDetails = EventComponent.queryByText(
       'This is the details div'
-      )
+    )
     expect(showEventDetails).not.toBeInTheDocument()
   })
 })

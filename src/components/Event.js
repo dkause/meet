@@ -13,7 +13,8 @@ const Event = ({ event }) => {
       <div>{event.created}</div>
       <div>{event.location}</div>
       <button className='detailsButton' onClick={handleButtonClick}>
-        {showDetails ? 'Hide details' : 'Show details'} {/* Toogle the button text */}
+        {showDetails ? 'Hide details' : 'Show details'}{' '}
+        {/* Toogle the button text */}
       </button>
       {showDetails ? (
         <div className='showEventDetails'>This is the details div</div>
