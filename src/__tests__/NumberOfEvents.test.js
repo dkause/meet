@@ -1,4 +1,5 @@
-import { render } from '@testing-library/react'
+import { render, within } from '@testing-library/react'
+import App from '../App.js'
 import NumberOfEvents from '../components/NumberOfEvents.js'
 import userEvent from '@testing-library/user-event'
 
@@ -35,4 +36,16 @@ describe('<NumberOfEvents /> component', () => {
     await userEvent.type(textboxElement, '52')
     expect(window.alert).toHaveBeenCalledWith('value is bigger as 50')
   })
+})
+describe('<Number of Event /> integration', () => {
+  test('Number of Events displayed is changed on user imput', async () => {
+    const Appcomponent = render(<App />)
+    const AppDOM = Appcomponent.container.firstChild
+
+    const NumberOfEventsDOM = AppDOM.querySelector('#number-of-events')
+    const NumberOfEvents = within(NumberOfEventsDOM).queryByRole('textbox')
+    await userEvent.type(NumberOfEvents, '{backspace}{backspace}10')
+    expect(NumberOfEvents).toBeInTheDocument()
+    expect(NumberOfEvents.value).toBe('10')
+  }) // Remove the extra closing parenthesis here
 })

@@ -20,7 +20,7 @@ describe('<App /> component', () => {
     expect(AppDOM.querySelector('#number-of-events')).toBeInTheDocument()
   })
 })
-describe('<App /> integration', () =>{
+describe('<App /> integration', () => {
   test('renders a list of events matching the city selected by the user', async () => {
     const user = userEvent.setup()
     const Appcomponent = render(<App />)
@@ -30,17 +30,20 @@ describe('<App /> integration', () =>{
     const CitysearchInput = within(CitySearchDom).queryByRole('textbox')
 
     await user.type(CitysearchInput, 'Berlin')
-    const berlinSuggestionItem = within(CitySearchDom).queryByText('Berlin, Germany')
+    const berlinSuggestionItem =
+      within(CitySearchDom).queryByText('Berlin, Germany')
     await user.click(berlinSuggestionItem)
 
     const EventListDom = AppDom.querySelector('#event-list')
     const allRenderedEventItems = within(EventListDom).queryAllByRole('article')
 
     const allEvents = await getEvents()
-    const berlinEvents = allEvents.filter( event => event.location === 'Berlin, Germany')
+    const berlinEvents = allEvents.filter(
+      (event) => event.location === 'Berlin, Germany'
+    )
     expect(allRenderedEventItems.length).toBe(berlinEvents.length)
-    allRenderedEventItems.forEach(event => {
+    allRenderedEventItems.forEach((event) => {
       expect(event.textContent).toContain('Berlin, Germany')
     })
-    })
+  })
 })
