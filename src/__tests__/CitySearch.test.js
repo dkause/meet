@@ -1,11 +1,13 @@
-import { render } from '@testing-library/react'
+import { render, waitFor, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import CitySearch from '../components/CitySearch'
+import App from '../App'
 import { extractLocations, getEvents } from '../api'
+
 describe('<CitySearch /> component', () => {
   let CitySearchComponent
   beforeEach(() => {
-    CitySearchComponent = render(<CitySearch />)
+    CitySearchComponent = render(<CitySearch allLocations={[]}/>)
   })
 
   test('renders text input', () => {
@@ -54,7 +56,8 @@ describe('<CitySearch /> component', () => {
     const user = userEvent.setup()
     const allEvents = await getEvents()
     const allLocations = extractLocations(allEvents)
-    CitySearchComponent.rerender(<CitySearch allLocations={allLocations} />)
+    CitySearchComponent.rerender(<CitySearch allLocations={allLocations} setCurrentCity={() => { }} />)
+    
     const cityTextBox = CitySearchComponent.queryByRole('textbox')
     await user.type(cityTextBox, 'Berlin')
 
@@ -63,5 +66,24 @@ describe('<CitySearch /> component', () => {
       CitySearchComponent.queryAllByRole('listitem')[0]
     await user.click(BerlinGermanySuggestion)
     expect(cityTextBox).toHaveValue(BerlinGermanySuggestion.textContent)
+  })
+})
+describe('<Citysearch /> integration', () => {
+
+  test ('renders suggestion list when app is rendered', async () => {
+    const user = userEvent.setup()
+    const Appcomponent = render(<App />)
+    const AppDOM = Appcomponent.container.firstChild
+
+    const CitySearchDOM = AppDOM.querySelector('#city-search')
+    const cityTextBox = within(CitySearchDOM).queryByRole('textbox')
+    await user.click(cityTextBox)
+
+    const allEvents = await getEvents()
+    const allLocations = extractLocations(allEvents)
+    await waitFor(() => {
+      const suggestionListItems = within(CitySearchDOM).queryAllByRole('listitem')
+      expect(suggestionListItems.length).toBe(allLocations.length +1) // liste + "all cities!""
+    })
   })
 })
