@@ -8,18 +8,25 @@ const Event = ({ event }) => {
   }
 
   return (
-    <li id='summary'>
+    <div>
+    <article id='summary'>
+      <header>
       <h2>{event.summary}</h2>
       <div>{event.created}</div>
       <div>{event.location}</div>
+      </header>
+      <footer>
+
       <button className='detailsButton' onClick={handleButtonClick}>
         {showDetails ? 'Hide details' : 'Show details'}{' '}
         {/* Toogle the button text */}
       </button>
       {showDetails ? (
         <div className='showEventDetails'>This is the details div</div>
-      ) : null}
-    </li>
+        ) : null}
+        </footer>
+    </article>
+    </div>
   )
 }
 export default Event

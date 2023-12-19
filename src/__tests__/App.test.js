@@ -34,7 +34,7 @@ describe('<App /> integration', () =>{
     await user.click(berlinSuggestionItem)
 
     const EventListDom = AppDom.querySelector('#event-list')
-    const allRenderedEventItems = within(EventListDom).queryAllByRole('listitem')
+    const allRenderedEventItems = within(EventListDom).queryAllByRole('article')
 
     const allEvents = await getEvents()
     const berlinEvents = allEvents.filter( event => event.location === 'Berlin, Germany')

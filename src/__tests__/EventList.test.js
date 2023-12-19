@@ -15,7 +15,7 @@ describe('<EventList /> component', () => {
   test('renders correct number of events', async () => {
     const allEvents = await getEvents()
     EventListComponent.rerender(<EventList events={allEvents} />)
-    expect(EventListComponent.getAllByRole('listitem')).toHaveLength(
+    expect(EventListComponent.getAllByRole('article')).toHaveLength(
       allEvents.length
     )
   })
@@ -27,8 +27,26 @@ describe('<EventList /> integration test)', () => {
     const AppDOM = Appcomponent.container.firstChild
     const EventListDOM = AppDOM.querySelector('#event-list')
     await waitFor (() => {
-      const EventListItems = within(EventListDOM).queryAllByRole('listitem')
+      const EventListItems = within(EventListDOM).queryAllByRole('article')
       expect(EventListItems.length).toBeGreaterThan(0) 
     })
   })
+  // Copilot Tests
+  // Test, um zu überprüfen, ob die EventList-Komponente korrekt gerendert wird, wenn keine Ereignisse übergeben werden
+  test('renders correctly when no events are passed', () => {
+    const { queryByRole } = render(<EventList />)
+    expect(queryByRole('article')).toBeNull()
+  })
+
+  // Test, um zu überprüfen, ob die EventList-Komponente korrekt gerendert wird, wenn Ereignisse übergeben werden
+  test('renders correctly when events are passed', () => {
+    const mockEvents = [
+      { id: 1, name: 'Event 1' },
+      { id: 2, name: 'Event 2' },
+    ]
+    const { getAllByRole } = render(<EventList events={mockEvents} />)
+    expect(getAllByRole('article')).toHaveLength(mockEvents.length)
+  })
+
+  
 } )

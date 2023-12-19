@@ -33,6 +33,6 @@ describe('<NumberOfEvents /> component', () => {
     const textboxElement = getByRole('textbox')
     window.alert = jest.fn() // Mock the alert function
     await userEvent.type(textboxElement, '52')
-    expect(window.alert).toHaveBeenCalledWith('zero')
+    expect(window.alert).toHaveBeenCalledWith('value is bigger as 50')
   })
 })

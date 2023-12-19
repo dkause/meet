@@ -3,8 +3,10 @@ const NumberOfEvents = (props) => {
     const value = event.target.value
     if (isNaN(value)) {
       alert('value is not a number')
-    } else if ((value) => 50) {
+    } else if (Number(value) === 0) {
       alert('zero')
+    } else if (Number(value) > 50) {
+      alert('value is bigger as 50')
     }
   }
   return (
