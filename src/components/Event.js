@@ -1,24 +1,26 @@
 import { useState } from 'react'
 
+export const formatDate = (dateString) => {
+  const dateOptions = { year: 'numeric', month: 'long', day: 'numeric' }
+  const timeOptions = { hour: '2-digit', minute: '2-digit' }
+  const date = new Date(dateString)
+  return `${date.toLocaleDateString(
+    undefined,
+    dateOptions
+  )} ${date.toLocaleTimeString(undefined, timeOptions)}`
+}
+
 const Event = ({ event }) => {
   const [showDetails, setShowDetails] = useState(false)
   // Thanks Copilot
-  const formatDate = (dateString) => {
-    const dateOptions = { year: 'numeric', month: 'long', day: 'numeric' }
-    const timeOptions = { hour: '2-digit', minute: '2-digit' }
-    const date = new Date(dateString)
-    return `${date.toLocaleDateString(
-      undefined,
-      dateOptions
-    )} ${date.toLocaleTimeString(undefined, timeOptions)}`
-  }
 
   const handleButtonClick = () => {
     setShowDetails(!showDetails) // !showDetails means the opposite of showDetails it toogles the state
   }
 
   return (
-    <article id='summary'>
+    <article id='summary'
+    data-testid="event-list">
       <header>
         <h2>{event.summary}</h2>
         <div>{formatDate(event.created)}</div>

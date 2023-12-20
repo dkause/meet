@@ -1,4 +1,4 @@
-import Event from '../components/Event.js'
+import Event, { formatDate } from '../components/Event.js'
 import { render } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import mockData from '../mock-data'
@@ -16,7 +16,8 @@ describe('<Event /> component', () => {
     expect(title).toBeInTheDocument()
   })
   test('renders element for events start time', () => {
-    const startTime = EventComponent.queryByText(mockEvent.created)
+    const formattedDate = formatDate(mockEvent.created)
+    const startTime = EventComponent.queryByText(formattedDate)
     expect(startTime).toBeInTheDocument()
   })
   test('renders element for events location', () => {

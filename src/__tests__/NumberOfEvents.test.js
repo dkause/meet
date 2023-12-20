@@ -1,7 +1,15 @@
-import { render, within } from '@testing-library/react'
+import {
+  fireEvent,
+  render,
+  screen,
+  within,
+  waitFor
+} from '@testing-library/react'
 import App from '../App.js'
 import NumberOfEvents from '../components/NumberOfEvents.js'
 import userEvent from '@testing-library/user-event'
+
+import EventList from '../components/EventList.js'
 
 describe('<NumberOfEvents /> component', () => {
   test('NumberOfEvents component should contain an element with role "textbox"', () => {
@@ -9,34 +17,43 @@ describe('<NumberOfEvents /> component', () => {
     const textboxElement = getByRole('textbox')
     expect(textboxElement).toBeInTheDocument()
   })
-  test('NumberOfEvents component should contain an element with role "textbox" and default value of 32', () => {
-    const { getByRole } = render(<NumberOfEvents />)
+  test('NumberOfEvents component should contain a default value of 32', () => {
+    const { getByRole } = render(<NumberOfEvents currentNOE={32} />)
     const textboxElement = getByRole('textbox')
-    expect(textboxElement).toBeInTheDocument()
     expect(textboxElement.value).toBe('32')
   })
   test('NumberOfEvents value should change depending on the value a user types in', async () => {
-    const { getByRole } = render(<NumberOfEvents />)
+    const setCurrentNOE = jest.fn()
+    const { getByRole } = render(
+      <NumberOfEvents currentNOE={[]} setCurrentNOE={setCurrentNOE} />
+    )
     const textboxElement = getByRole('textbox')
-    await userEvent.type(textboxElement, '{backspace}{backspace}10')
-    expect(textboxElement).toBeInTheDocument()
-    expect(textboxElement.value).toBe('10')
+    userEvent.clear(textboxElement)
+    await fireEvent.change(textboxElement, { target: { value: '10' } })
+    expect(setCurrentNOE).toHaveBeenCalledWith('10')
   })
   test('NumberOfEvents should alert when not a number is typed in by user', async () => {
-    const { getByRole } = render(<NumberOfEvents />)
+    const setCurrentNOE = jest.fn()
+    const { getByRole } = render(
+      <NumberOfEvents currentNOE={[]} setCurrentNOE={setCurrentNOE} />
+    )
     const textboxElement = getByRole('textbox')
-    window.alert = jest.fn() // Mock the alert function
+    window.alert = jest.fn()
     await userEvent.type(textboxElement, 'four')
     expect(window.alert).toHaveBeenCalledWith('value is not a number')
   })
   test('NumberOfEvents should alert when value typed in by user is bigger than 50', async () => {
-    const { getByRole } = render(<NumberOfEvents />)
+    const setCurrentNOE = jest.fn()
+    const { getByRole } = render(
+      <NumberOfEvents setCurrentNOE={setCurrentNOE} />
+    )
     const textboxElement = getByRole('textbox')
-    window.alert = jest.fn() // Mock the alert function
+    window.alert = jest.fn()
     await userEvent.type(textboxElement, '52')
     expect(window.alert).toHaveBeenCalledWith('value is bigger as 50')
   })
 })
+
 describe('<Number of Event /> integration', () => {
   test('Number of Events displayed is changed on user imput', async () => {
     const Appcomponent = render(<App />)
@@ -47,5 +64,24 @@ describe('<Number of Event /> integration', () => {
     await userEvent.type(NumberOfEvents, '{backspace}{backspace}10')
     expect(NumberOfEvents).toBeInTheDocument()
     expect(NumberOfEvents.value).toBe('10')
-  }) // Remove the extra closing parenthesis here
+  })
+  test('Number of Events length is correctly changed on user input', async () => {
+    render(<App />)
+    const textboxElement = screen.getByTestId('event-number-input')
+    fireEvent.change(textboxElement, { target: { value: '5' } })
+
+    const eventList = await screen.findAllByTestId('event-list')
+    expect(eventList.length).toBe(5)
+  })
+
+  test('Number of events displayed resets to default when input in NumberOfEvents is cleared', async () => {
+    const setCurrentNOE = jest.fn()
+    const { getByRole } = render(
+      <NumberOfEvents setCurrentNOE={setCurrentNOE} />
+    )
+    const textboxElement = getByRole('textbox')
+    await userEvent.type(textboxElement, '{selectall}{backspace}')
+
+    expect(textboxElement).toHaveValue('32')
+  })
 })

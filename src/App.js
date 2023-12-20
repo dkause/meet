@@ -1,3 +1,4 @@
+// This code imports necessary dependencies and components for a React application related to searching and displaying events. It also imports functions for extracting locations and retrieving events from an API.
 import React, { useState, useEffect } from 'react'
 import CitySearch from './components/CitySearch'
 import EventList from './components/EventList'
