@@ -46,4 +46,20 @@ describe('<App /> integration', () => {
       expect(event.textContent).toContain('Berlin, Germany')
     })
   })
-})
+  test('renders a list of events matching the number of events selected by the user', async () => {
+    const user = userEvent.setup()
+    const Appcomponent = render(<App />)
+    const AppDom = Appcomponent.container.firstChild
+
+    const NumberOfEventsDom = AppDom.querySelector('#number-of-events')
+    const NumberOfEventsInput = within(NumberOfEventsDom).queryByRole('textbox')
+
+    await user.type(NumberOfEventsInput, '{backspace}{backspace} 5')
+
+    const EventListDom = AppDom.querySelector('#event-list')
+    const allRenderedEventItems = within(EventListDom).queryAllByRole('article')
+
+    expect(allRenderedEventItems.length).toBe(5)
+    })
+  })
+
