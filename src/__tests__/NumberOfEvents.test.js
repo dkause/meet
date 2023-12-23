@@ -73,15 +73,4 @@ describe('<Number of Event /> integration', () => {
     const eventList = await screen.findAllByTestId('event-list')
     expect(eventList.length).toBe(5)
   })
-
-  // test('Number of events displayed resets to default when input in NumberOfEvents is cleared', async () => {
-  //   const setCurrentNOE = jest.fn()
-  //   const { getByRole } = render(
-  //     <NumberOfEvents setCurrentNOE={setCurrentNOE} />
-  //   )
-  //   const textboxElement = getByRole('textbox')
-  //   await userEvent.type(textboxElement, '{selectall}{backspace}')
-
-  //   expect(textboxElement).toHaveValue('32')
-  // })
 })

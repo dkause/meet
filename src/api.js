@@ -1,5 +1,3 @@
-// Two functions: 1. extract locations and remove duplicates, 2. getEvents which will return the list of all events
-
 import mockData from './mock-data'
 
 /**

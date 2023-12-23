@@ -1,8 +1,6 @@
-import { useState } from "react"
+import { useState } from 'react'
 
 const NumberOfEvents = ({ currentNOE, setCurrentNOE }) => {
-  
-  // const [ currentNOE, setCurrentNOE] = useState(32)
   const handleInputChanged = (event) => {
     console.log('<NumberOfEvents/>', event.target.value)
     const value = event.target.value
@@ -16,11 +14,10 @@ const NumberOfEvents = ({ currentNOE, setCurrentNOE }) => {
     }
   }
   return (
-    <div id='number-of-events'
-    >
+    <div id='number-of-events'>
       <input
-      id="number-of-events-input"
-      data-testid='event-number-input'
+        id='number-of-events-input'
+        data-testid='event-number-input'
         type='text'
         value={currentNOE}
         onChange={handleInputChanged}

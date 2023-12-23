@@ -21,32 +21,27 @@ describe('<EventList /> component', () => {
   })
 })
 describe('<EventList /> integration test)', () => {
-  test('renders a list of min. one event when the app is mounted and rendered', async () =>
-  {
-    const Appcomponent = render (<App />)
+  test('renders a list of min. one event when the app is mounted and rendered', async () => {
+    const Appcomponent = render(<App />)
     const AppDOM = Appcomponent.container.firstChild
     const EventListDOM = AppDOM.querySelector('#event-list')
-    await waitFor (() => {
+    await waitFor(() => {
       const EventListItems = within(EventListDOM).queryAllByRole('article')
-      expect(EventListItems.length).toBeGreaterThan(0) 
+      expect(EventListItems.length).toBeGreaterThan(0)
     })
   })
-  // Copilot Tests
-  // Test, um zu überprüfen, ob die EventList-Komponente korrekt gerendert wird, wenn keine Ereignisse übergeben werden
+
   test('renders correctly when no events are passed', () => {
     const { queryByRole } = render(<EventList />)
     expect(queryByRole('article')).toBeNull()
   })
 
-  // Test, um zu überprüfen, ob die EventList-Komponente korrekt gerendert wird, wenn Ereignisse übergeben werden
   test('renders correctly when events are passed', () => {
     const mockEvents = [
       { id: 1, name: 'Event 1' },
-      { id: 2, name: 'Event 2' },
+      { id: 2, name: 'Event 2' }
     ]
     const { getAllByRole } = render(<EventList events={mockEvents} />)
     expect(getAllByRole('article')).toHaveLength(mockEvents.length)
   })
-
-  
-} )
+})

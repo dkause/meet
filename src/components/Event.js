@@ -12,20 +12,16 @@ export const formatDate = (dateString) => {
 
 const Event = ({ event }) => {
   const [showDetails, setShowDetails] = useState(false)
-  // Thanks Copilot
 
   const handleButtonClick = () => {
-    setShowDetails(!showDetails) // !showDetails means the opposite of showDetails it toogles the state
+    setShowDetails(!showDetails)
   }
 
   return (
-    <article id='summary'
-    data-testid="event-list">
-      <header>
-        <h2>{event.summary}</h2>
-        <div>{formatDate(event.created)}</div>
-        <div>{event.location}</div>
-      </header>
+    <article id='summary' data-testid='event-list'>
+      <h2>{event.summary}</h2>
+      <p>{formatDate(event.created)}</p>
+      <p>{event.location}</p>
 
       <button className='detailsButton' onClick={handleButtonClick}>
         {showDetails ? 'Hide details' : 'Show details'}{' '}

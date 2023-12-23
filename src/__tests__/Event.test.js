@@ -3,14 +3,14 @@ import { render } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import mockData from '../mock-data'
 
-const mockEvent = mockData[0] // only first element of mockdata
+const mockEvent = mockData[0]
 
 describe('<Event /> component', () => {
   let EventComponent
   beforeEach(() => {
     EventComponent = render(<Event event={mockEvent} />)
   })
-  // Tests
+
   test('renders element for events title', () => {
     const title = EventComponent.queryByText(mockEvent.summary)
     expect(title).toBeInTheDocument()
@@ -36,7 +36,7 @@ describe('<Event /> component', () => {
   })
   test('click on detailsButton shows event details', async () => {
     const user = userEvent.setup()
-    // const detailsButton = EventComponent.container.querySelector('.detailsButton')
+
     const detailsButton = EventComponent.queryByText('Show details')
     await user.click(detailsButton)
 
@@ -47,7 +47,7 @@ describe('<Event /> component', () => {
   })
   test('click on detailsButton hides event details', async () => {
     const user = userEvent.setup()
-    // const detailsButton = EventComponent.container.querySelector('.detailsButton')
+
     const detailsButton = EventComponent.queryByText('hide details')
     await user.click(detailsButton)
 
