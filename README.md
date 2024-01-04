@@ -13,13 +13,13 @@ presents location based it-events
 
 As a **user**,  
 I should be able to **filter events by city**  
-So that **I can see a list of events taking place in the city**
-
-***Scenario: User filters events by city***
+So that **I can see a list of events taking place in the city**  
+SCENARIO 1  
+User filters events by city
 
 - **Given** the user opened the events app  
 - **When** they select the option to filter by city and they enter the name of   the city  
-- **Then** only events from that city will be displayed to them
+- **Then** events from that city will be displayed to them
 
 
 ## Feature: Show/Hide Event Details

@@ -18,16 +18,16 @@ const Event = ({ event }) => {
   }
 
   return (
-    <article id='summary' data-testid='event-list'>
+    <article id='summary' className='event' data-testid='event-list'>
       <h2>{event.summary}</h2>
       <p>{formatDate(event.created)}</p>
       <p>{event.location}</p>
 
-      <button className='detailsButton' onClick={handleButtonClick}>
+      <button data-testid="detailsButton" className='detailsButton' onClick={handleButtonClick}>
         {showDetails ? 'Hide details' : 'Show details'}{' '}
       </button>
       {showDetails ? (
-        <div className='showEventDetails'>This is the details div</div>
+        <div data-testid="showEventDetails" className='showEventDetails'>This is the details div</div>
       ) : null}
     </article>
   )

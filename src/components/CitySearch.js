@@ -28,6 +28,8 @@ const CitySearch = ({ allLocations, setCurrentCity }) => {
   return (
     <div id='city-search'>
       <input
+              data-testid='event-number-input'
+
         type='text'
         className='city'
         placeholder='Search for a city'

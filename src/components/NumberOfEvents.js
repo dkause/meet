@@ -2,7 +2,6 @@ import { useState } from 'react'
 
 const NumberOfEvents = ({ currentNOE, setCurrentNOE }) => {
   const handleInputChanged = (event) => {
-    console.log('<NumberOfEvents/>', event.target.value)
     const value = event.target.value
     setCurrentNOE(value)
     if (isNaN(value)) {

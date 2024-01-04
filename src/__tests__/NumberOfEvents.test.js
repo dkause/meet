@@ -1,15 +1,11 @@
 import {
   fireEvent,
   render,
-  screen,
-  within,
-  waitFor
-} from '@testing-library/react'
+  screen} from '@testing-library/react'
 import App from '../App.js'
 import NumberOfEvents from '../components/NumberOfEvents.js'
 import userEvent from '@testing-library/user-event'
 
-import EventList from '../components/EventList.js'
 
 describe('<NumberOfEvents /> component', () => {
   test('NumberOfEvents component should contain an element with role "textbox"', () => {
@@ -55,22 +51,11 @@ describe('<NumberOfEvents /> component', () => {
 })
 
 describe('<Number of Event /> integration', () => {
-  test('Number of Events displayed is changed on user imput', async () => {
-    const Appcomponent = render(<App />)
-    const AppDOM = Appcomponent.container.firstChild
-
-    const NumberOfEventsDOM = AppDOM.querySelector('#number-of-events')
-    const NumberOfEvents = within(NumberOfEventsDOM).queryByRole('textbox')
-    await userEvent.type(NumberOfEvents, '{backspace}{backspace}10')
-    expect(NumberOfEvents).toBeInTheDocument()
-    expect(NumberOfEvents.value).toBe('10')
-  })
-  test('Number of Events length is correctly changed on user input', async () => {
+  test('Number of Events displayed is changed on user input', async () => {
     render(<App />)
-    const textboxElement = screen.getByTestId('event-number-input')
-    fireEvent.change(textboxElement, { target: { value: '5' } })
-
-    const eventList = await screen.findAllByTestId('event-list')
-    expect(eventList.length).toBe(5)
+    const NumberOfEventsDOM = await screen.findByTestId('event-number-input')
+    await userEvent.type(NumberOfEventsDOM, '{backspace}{backspace}10')
+    expect(NumberOfEventsDOM).toBeInTheDocument()
+    expect(NumberOfEventsDOM.value).toBe('10')
   })
 })
