@@ -123,7 +123,7 @@ I can focus on Code, no server configuration or maintanance needed
 ## Flowdiagram
 
 ```mermaid
-sequenceDiagram;
+sequenceDiagram
 MeetApp->>AWS Lambda: Authentication
 AWS Lambda->>OAuth: User?
 OAuth->>AWS Lambda: Yes 
@@ -135,4 +135,9 @@ MeetApp->>AWS Lambda: Request
 AWS Lambda->>GoogleCal: Request
 GoogleCal->>AWS Lambda: Response
 AWS Lambda->>MeetApp: Response
-``````
+```
+sequenceDiagram
+    participant Alice
+    participant Bob
+    Alice->>Bob: Hi Bob
+    Bob->>Alice: Hi Alice
