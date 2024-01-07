@@ -1,16 +1,17 @@
-import { useState } from 'react'
 
-const NumberOfEvents = ({ currentNOE, setCurrentNOE }) => {
+const NumberOfEvents = ({ currentNOE, setCurrentNOE, setErrorAlert }) => {
   const handleInputChanged = (event) => {
     const value = event.target.value
     setCurrentNOE(value)
+    let errorText =''
     if (isNaN(value)) {
-      alert('value is not a number')
+      errorText = 'Please enter a number'
     } else if (Number(value) === 0) {
-      alert('zero')
+      errorText = 'Please enter at least "1", so we can display at least one event'
     } else if (Number(value) > 50) {
-      alert('value is bigger as 50')
+      errorText = 'We can only display 50 events at once, please enter a value less 50'
     }
+    setErrorAlert(errorText)
   }
   return (
     <div id='number-of-events'>

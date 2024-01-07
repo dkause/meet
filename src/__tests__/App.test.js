@@ -30,7 +30,6 @@ describe('<Number of Event /> integration', () => {
     const NumberOfEvents = await screen.findByTestId('event-number-input')
     await userEvent.type(NumberOfEvents, '{backspace}{backspace}10')
     expect(NumberOfEvents).toBeInTheDocument()
-    expect(NumberOfEvents.value).toBe('10')
+    expect(NumberOfEvents).toHaveValue('10')
   })
-  
 })

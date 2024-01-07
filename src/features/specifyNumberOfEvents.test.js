@@ -9,8 +9,13 @@ const feature = loadFeature('./src/features/specifyNumberOfEvents.feature')
 defineFeature(feature, (test) => {
   test('User specifies the number of events', ({ given, when, then }) => {
     const setCurrentNOE = jest.fn()
+    const setErrorAlert = jest.fn()
     const { getByRole } = render(
-      <NumberOfEvents currentNOE={[]} setCurrentNOE={setCurrentNOE} />
+      <NumberOfEvents
+        currentNOE={[]}
+        setCurrentNOE={setCurrentNOE}
+        setErrorAlert={setErrorAlert}
+      />
     )
     const textboxElement = getByRole('textbox')
     given("the user is on the event app's home screen", () => {

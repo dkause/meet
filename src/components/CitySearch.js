@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
 
-const CitySearch = ({ allLocations, setCurrentCity }) => {
+const CitySearch = ({ allLocations, setCurrentCity, setInfoAlert }) => {
   const [showSuggestions, setShowSuggestions] = useState(false)
   const [query, setQuery] = useState('')
   const [suggestions, setSuggestions] = useState([])
-  
+
   const handleInputChanged = (event) => {
     const value = event.target.value
     const filteredLocations = allLocations
@@ -14,13 +14,23 @@ const CitySearch = ({ allLocations, setCurrentCity }) => {
       : []
     setQuery(value)
     setSuggestions(filteredLocations)
+
+    // infotext für infoAlert
+    let infoText
+    if (filteredLocations.length === 0) {
+      infoText = 'We cannot find the city you are looking for, try another city'
+    } else {
+      infoText = ''
+    }
+    setInfoAlert(infoText)
   }
-  
+
   const handleItemClicked = (event) => {
     const value = event.target.textContent
     setQuery(value)
     setShowSuggestions(false)
     setCurrentCity(value)
+    setInfoAlert('') // sets infoalert empty when user clicks on 'See all cities'
   }
   useEffect(() => {
     setSuggestions(allLocations)
@@ -28,8 +38,7 @@ const CitySearch = ({ allLocations, setCurrentCity }) => {
   return (
     <div id='city-search'>
       <input
-              data-testid='event-number-input'
-
+        data-testid='city-search'
         type='text'
         className='city'
         placeholder='Search for a city'

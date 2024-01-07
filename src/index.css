@@ -15,3 +15,10 @@ code {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
 }
+.alerts-container {
+  position: fixed;
+  top: 0px;
+  left: 20px;
+  width: 100%;
+  z-index: 1000;
+}
