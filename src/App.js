@@ -26,7 +26,7 @@ const App = () => {
   useEffect(() => {
     let warningText = ''
     if (navigator.onLine) {
-      warningText = 'You are online'
+      warningText = ''
     } else {
       warningText = 'You are offline, the app is working in offline mode' 
     }
