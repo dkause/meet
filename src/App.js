@@ -26,17 +26,17 @@ const App = () => {
   useEffect(() => {
     let warningText = ''
     if (navigator.onLine) {
-      warningText = ''
+      warningText = 'You are online'
     } else {
-      warningText = 'You are offliine, the is working in offline Mode' 
+      warningText = 'You are offline, the app is working in offline mode' 
     }
     setWarningAlert(warningText)
     fetchData()
   }, [currentCity, currentNOE])
   
+  console.log('WarnungText', warningAlert)
   return (
     <div className='App'>
-      console.log('WarnungText', warningAlert)
       <div role='alertdialog' className='alerts-container'>
         {infoAlert.length ? <InfoAlert text={infoAlert} /> : null}
         {errorAlert.length ? <ErrorAlert text={errorAlert} /> : null}
