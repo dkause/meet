@@ -30,6 +30,7 @@ const App = () => {
     } else {
       warningText = 'You are offliine, the is working in offline Mode' 
     }
+    console.log('WarnungText', warningText)
     setWarningAlert(warningText)
     fetchData()
   }, [currentCity, currentNOE])
