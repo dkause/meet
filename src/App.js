@@ -4,6 +4,9 @@ import EventList from './components/EventList'
 import { InfoAlert, ErrorAlert, WarningAlert } from './components/Alerts'
 import NumberOfEvents from './components/NumberOfEvents'
 import { extractLocations, getEvents } from './api'
+import CityEventsChart from './components/CityEventsChart'
+import EventGenresChart from './components/EventGenresChart'
+import logo from './img/meet-app-144.png'
 
 const App = () => {
   const [events, setEvents] = useState([])
@@ -28,27 +31,44 @@ const App = () => {
     if (navigator.onLine) {
       warningText = ''
     } else {
-      warningText = 'You are offline, the app is working in offline mode' 
+      warningText = 'You are offline, the app is working in offline mode'
     }
     setWarningAlert(warningText)
     fetchData()
   }, [currentCity, currentNOE])
-  
-  console.log('WarnungText', warningAlert)
+
   return (
     <div className='App'>
-      <div role='alertdialog' className='alerts-container'>
+      <h1 className='page-title'>
+        <img src={logo}></img>Meet App - Flesh Up Your IT-Skills
+      </h1>
+      {/* <div role='alertdialog' className='alerts-container'>
         {infoAlert.length ? <InfoAlert text={infoAlert} /> : null}
         {errorAlert.length ? <ErrorAlert text={errorAlert} /> : null}
         {warningAlert.length ? <WarningAlert text={warningAlert} /> : null}
-      </div>
-      <CitySearch
-        allLocations={allLocations}
-        setCurrentCity={setCurrentCity}
-        setInfoAlert={setInfoAlert}
+      </div> */}
+      <div className='searchContainer'>
+        <CitySearch
+          allLocations={allLocations}
+          setCurrentCity={setCurrentCity}
+          setInfoAlert={setInfoAlert}
         />
-      <NumberOfEvents currentNOE={currentNOE} setCurrentNOE={setCurrentNOE} setErrorAlert={setErrorAlert}/>
-      <EventList events={events}  />
+        <NumberOfEvents
+          currentNOE={currentNOE}
+          setCurrentNOE={setCurrentNOE}
+          setErrorAlert={setErrorAlert}
+        />
+        <div role='alertdialog' className='info'>
+          {infoAlert.length ? <InfoAlert text={infoAlert} /> : null}
+          {errorAlert.length ? <ErrorAlert text={errorAlert} /> : null}
+          {warningAlert.length ? <WarningAlert text={warningAlert} /> : null}
+        </div>
+      </div>
+      <div className='charts-container'>
+        <EventGenresChart events={events} />
+        <CityEventsChart allLocations={allLocations} events={events} />
+      </div>
+      <EventList events={events} />
     </div>
   )
 }
