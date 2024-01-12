@@ -1,13 +1,27 @@
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital@1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@1,500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@1,500&family=IBM+Plex+Serif&display=swap');
+
+/* Override the default font-family of pico.css */
+:root {
+  --font-family: 'IBM Plex Serif', serif;
+}
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: rgb(128, 213, 195);
+  font-family: 'IBM Plex Mono', sans-serif;
+}
 
 body {
   margin: 0;
-  font-family: system-ui;
+  font-family: 'IBM Plex Serif', serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 .page-title {
-  font-family: 'IBM Plex Sans', sans-serif;
+  font-family: 'IBM Plex Mono', sans-serif;
   font-style: italic;
   font-size: 4ch;
   text-shadow: 2px 2px 0 rgba(0, 128, 128, 0.254), 4px 4px 0 #ff00d09f,
@@ -46,10 +60,38 @@ code {
   grid-template-columns: 1fr 1fr;
 }
 
+article.event {
+  text-align: center;
+}
+article.event h2 {
+  font-size: 2vw;
+  text-align: center;
+}
 @media (max-width: 768px) {
+  .info,
+  .numberOfEvents,
+  .searchContainer,
   .charts-container {
-    display: grid;
-    grid-template-columns: 1fr;
-    /* Add your styles for screens below 768px here */
+    display: block;
   }
+  img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .page-title {
+    font-size: calc(1.5rem + 2vw);
+    text-align: center;
+  }
+  article.event h2 {
+   font-size: 3vw;
+    text-align: center;
+  }
+}
+@media (max-width: 480px) {
+  article.event h2 {
+    font-size: 7vw;
+    text-align: center;
+  }
+  
 }
