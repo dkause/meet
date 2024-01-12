@@ -40,7 +40,7 @@ const App = () => {
   return (
     <div className='App'>
       <h1 className='page-title'>
-        <img src={logo}></img>Meet App - Flesh Up Your IT-Skills
+        <img src={logo} alt=''></img>Meet App - Flesh Up Your IT-Skills
       </h1>
       {/* <div role='alertdialog' className='alerts-container'>
         {infoAlert.length ? <InfoAlert text={infoAlert} /> : null}
