@@ -30,7 +30,7 @@ const EventGenresChart = ({ events }) => {
   const genres = ['React', 'Javascript', 'Node', 'jquery', 'Angular']
   useEffect(() => {
     setData(getData())
-  }, [`$[events]`])
+  }, [[events]])
 
   const getData = () => {
     const data = genres.map((genre) => {

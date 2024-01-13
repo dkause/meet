@@ -10,10 +10,19 @@ h3,
 h4,
 h5,
 h6 {
-  color: rgb(128, 213, 195);
+  color: rgb(21, 34, 31);
   font-family: 'IBM Plex Mono', sans-serif;
 }
-
+@media (prefers-color-scheme: dark){
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: rgb(147, 239, 218);
+    font-family: 'IBM Plex Mono', sans-serif;
+  }
+}
 body {
   margin: 0;
   font-family: 'IBM Plex Serif', serif;
