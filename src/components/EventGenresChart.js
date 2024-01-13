@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react'
 import {
   Pie,
   PieChart,
-  Tooltip,
   ResponsiveContainer
 } from 'recharts'
 

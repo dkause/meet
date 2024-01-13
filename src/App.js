@@ -42,11 +42,6 @@ const App = () => {
       <h1 className='page-title'>
         <img src={logo} alt=''></img>Meet App - Flesh Up Your IT-Skills
       </h1>
-      {/* <div role='alertdialog' className='alerts-container'>
-        {infoAlert.length ? <InfoAlert text={infoAlert} /> : null}
-        {errorAlert.length ? <ErrorAlert text={errorAlert} /> : null}
-        {warningAlert.length ? <WarningAlert text={warningAlert} /> : null}
-      </div> */}
       <div className='searchContainer'>
         <CitySearch
           allLocations={allLocations}
