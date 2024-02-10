@@ -32,6 +32,11 @@ good practise to use
 - easy to deploy  
 I can focus on Code, no server configuration or maintanance needed
 
+## My Experience
+
+Using Test Driven Development helped getting the focus in the code and provided valuable feedback during the development process. It helped me to commit to working  step by step. Even if it feels cumbersome to write lots of user stories and scenarios, it make the development process effective and probably faster in the end.  
+You can see the amount of user stories here:
+
 ## Feature: Filter Events by City
 
 As a **user**,  
@@ -133,16 +138,4 @@ So that **I can assess the events content fast at a glimpse**
 
 ## Flowdiagram
 
-```mermaid
-sequenceDiagram
-MeetApp->>AWS Lambda: Authentication
-AWS Lambda->>OAuth: User?
-OAuth->>AWS Lambda: Yes 
-AWS Lambda->>MeetApp: Redirect for consent 
-MeetApp->>OAuth: User grants consent
-destroy OAuth 
-OAuth->>AWS Lambda: Token
-MeetApp->>AWS Lambda: Request
-AWS Lambda->>GoogleCal: Request
-GoogleCal->>AWS Lambda: Response
-AWS Lambda->>MeetApp: Response
+[Flowdiagram](https://www.mermaidchart.com/raw/5ca2f77e-b417-447d-8f76-4325984adb62?theme=light&version=v0.1&format=svg)
