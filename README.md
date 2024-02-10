@@ -1,6 +1,7 @@
 # 🥩 MeetApp
 
-presents location based it-events. Its a serverless progressive wep application (PWA). The application uses the Google calendar API to fetch upcoming events. Its downloadable using a shortcut. And it uses AWS Lambda serverless functions to provide a token to access the GoogleAPI. Test Driven Development was used during the development process.       
+presents location based it-events. Its a serverless progressive wep application (PWA). The application uses the Google calendar API to fetch upcoming events. Its downloadable using a shortcut. It provides a visual presentation of the events as a graph. 
+And it uses AWS Lambda serverless functions to provide a token to access the GoogleAPI. Test Driven Development was used during the development process.       
 
 ## Key Features
 
@@ -10,6 +11,21 @@ presents location based it-events. Its a serverless progressive wep application 
 - Use the App When Offline.
 - Add an App Short cut to the Home Screen.
 - Display Charts Visualizing Event Details
+
+## Tools Used
+
+[![My Skills](https://skillicons.dev/icons?i=aws,gcp,react,vscode,gherkin)](https://skillicons.dev)
+
+## Why ServerLess for  🥩 Meet
+
+- scalable  
+We start with very few users
+- cost effective  
+no permanent server cost  
+- industry standard  
+good practise to use
+- easy to deploy  
+I can focus on Code, no server configuration or maintanance needed
 
 ## Feature: Filter Events by City
 
@@ -109,16 +125,6 @@ So that **I can assess the events content fast at a glimpse**
 &nbsp;&nbsp;&nbsp;&nbsp;**Then** the app should display visual representations such as charts and tables for the events data  
 &nbsp;&nbsp;&nbsp;&nbsp;**And** the user should have the ability to interact with and customize the visualizations
 
-## Why ServerLess for  🥩 Meet
-
-- scalable  
-We start with very few users
-- cost effective  
-no permanent server cost  
-- industry standard  
-good practise to use
-- easy to deploy  
-I can focus on Code, no server configuration or maintanance needed
 
 ## Flowdiagram
 
@@ -135,9 +141,3 @@ MeetApp->>AWS Lambda: Request
 AWS Lambda->>GoogleCal: Request
 GoogleCal->>AWS Lambda: Response
 AWS Lambda->>MeetApp: Response
-```
-sequenceDiagram
-    participant Alice
-    participant Bob
-    Alice->>Bob: Hi Bob
-    Bob->>Alice: Hi Alice
