@@ -1,6 +1,6 @@
 # 🥩 MeetApp
 
-presents location based it-events  
+presents location based it-events. Its a serverless progressive wep application (PWA). The application uses the Google calendar API to fetch upcoming events. Its downloadable using a shortcut. And it uses AWS Lambda serverless functions to provide a token to access the GoogleAPI. Test Driven Development was used during the development process.       
 
 ## Key Features
 
